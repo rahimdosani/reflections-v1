@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <defs>
+        <radialGradient id='g'>
+          <stop offset='0%' stop-color='%23ffd1ff'/>
+          <stop offset='100%' stop-color='%23c6b8ff'/>
+        </radialGradient>
+      </defs>
+      <circle cx='50' cy='50' r='45' fill='url(%23g)'/>
+    </svg>" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- INTRO OVERLAY -->
+  <div id="intro">
+    <div class="intro-content">
+      <p>Tap to continue</p>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="iktara.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Background Layers -->
+  <div class="gradient-bg"></div>
+  <div class="light-sweep"></div>
+  <canvas id="particles"></canvas>
+
+  <main class="wrapper">
+
+    <section class="hero reveal">
+      <h1>
+        This is for you<br>
+        <span class="name">Muskan</span>
+      </h1>
+      <p class="tagline">
+        Not an explanation.  
+        Just effort. Just honesty.
+      </p>
+    </section>
+
+    <section class="glass reveal delay-1">
+      <h2>I messed up.</h2>
+      <p>I shared something that was never mine to share.</p>
+      <p>I broke your trust- and I own that.</p>
+    </section>
+
+    <section class="glass reveal delay-2">
+      <h2>Your feelings matter.</h2>
+      <p>I understand why this hurt.</p>
+      <p>You trusted me- and I failed to protect that.</p>
+    </section>
+
+    <section class="glass reveal delay-3">
+      <h2>What this taught me.</h2>
+      <p>Intentions don’t undo impact.</p>
+      <p>Even if you spill the secret for saving someones life, that's unacceptable</p>
+    </section>
+
+    <section class="glass reveal delay-4">
+      <h2>The Truth</h2>
+      <p>I care for you more than anyone else, you matter to me the most</p>
+      <p>I don't wanna hurt you, I don't want to add anything to your plate</p>
+    </section>
+
+    <section class="end reveal delay-5">
+      <p>I am not saying what I did is justified by any chance, it is not, no apology could fix it</p>
+      <p class="final">But, I do want you to know that I’m truly sorry.
+        Can you please bet on me and give me another chance?
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

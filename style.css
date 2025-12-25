@@ -1,0 +1,217 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b0b16;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* =========================
+   INTRO OVERLAY (TOP LAYER)
+========================= */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 18, 0.92);
+  backdrop-filter: blur(18px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+#intro.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-content p {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #e6e6ff;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* =========================
+   BACKGROUND IMAGE
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(11,11,22,0.6),
+      rgba(11,11,22,0.8)
+    ),
+    url("memory.jpeg") center / cover no-repeat;
+  filter: blur(3px) brightness(0.95);
+  z-index: -5;
+  pointer-events: none;
+}
+
+/* =========================
+   GRADIENT MOTION
+========================= */
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(20,20,50,0.5),
+    rgba(45,27,105,0.45),
+    rgba(74,20,93,0.45)
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 22s ease infinite;
+  z-index: -4;
+  pointer-events: none;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   PARTICLES
+========================= */
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+}
+
+/* =========================
+   CONTENT WRAPPER
+========================= */
+.wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 160px 24px;
+  opacity: 0;              /* IMPORTANT */
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+/* Reveal content AFTER intro */
+body.started .wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.name {
+  background: linear-gradient(90deg, #ffd1ff, #c6b8ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  margin-top: 24px;
+  font-size: 1.05rem;
+  color: #d6d6ff;
+  max-width: 420px;
+}
+
+/* =========================
+   GLASS CARDS
+========================= */
+.glass {
+  margin-top: 90px;
+  padding: 48px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  transition: transform 0.5s ease;
+}
+
+.glass:hover {
+  transform: translateY(-6px);
+}
+
+.glass h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.glass p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  color: #f0f0ff;
+}
+
+/* =========================
+   ENDING
+========================= */
+.end {
+  margin-top: 140px;
+  text-align: center;
+  color: #d6d6ff;
+}
+
+.final {
+  margin-top: 24px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .glass {
+    padding: 32px;
+  }
+
+  .wrapper {
+    padding: 120px 20px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  body::before {
+    background-attachment: scroll;
+  }
+}
