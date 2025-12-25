@@ -1,41 +1,39 @@
 /* =========================
-   INTRO + MUSIC + REVEAL
+   UNIVERSAL INTRO + AUDIO
+   (Android + iOS SAFE)
 ========================= */
 
 const music = document.getElementById("bg-music");
 const intro = document.getElementById("intro");
 
-music.volume = 0.15;
-
 let started = false;
 
+// This function MUST be triggered directly by a user tap
 function startExperience() {
   if (started) return;
   started = true;
 
-  // Start background music
-  music.play().catch(() => {});
+  // 🔑 CRITICAL: Direct audio play inside user gesture
+  music.currentTime = 0;
+  music.volume = 0.15;
+  music.play().catch(() => {
+    // If blocked (rare), we silently fail without breaking UX
+  });
 
   // Reveal main content
   document.body.classList.add("started");
 
-  // Fade out intro overlay
+  // Fade out intro
   intro.classList.add("hidden");
 
   setTimeout(() => {
     intro.style.display = "none";
-
-    // Gentle scroll so it feels like progression
-    window.scrollTo({
-      top: window.innerHeight * 0.25,
-      behavior: "smooth"
-    });
-  }, 1200);
+  }, 1000);
 }
 
-// Global listeners (guaranteed to fire)
-window.addEventListener("click", startExperience, { once: true });
-window.addEventListener("touchstart", startExperience, { once: true });
+// Attach ONLY to intro (clear user intent)
+intro.addEventListener("click", startExperience);
+intro.addEventListener("touchstart", startExperience);
 
 /* =========================
    PARTICLES BACKGROUND
@@ -54,12 +52,12 @@ function resize() {
 resize();
 window.addEventListener("resize", resize);
 
-const particles = Array.from({ length: 60 }, () => ({
+const particles = Array.from({ length: 50 }, () => ({
   x: Math.random() * w,
   y: Math.random() * h,
   r: Math.random() * 2 + 0.8,
-  vx: (Math.random() - 0.5) * 0.3,
-  vy: (Math.random() - 0.5) * 0.3
+  vx: (Math.random() - 0.5) * 0.25,
+  vy: (Math.random() - 0.5) * 0.25
 }));
 
 function animate() {
